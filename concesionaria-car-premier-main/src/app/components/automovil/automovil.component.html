@@ -1,0 +1,34 @@
+<div style="height: 35px;"></div>
+<div class="automovil-list-wrapper">
+    <h2 class="titulo text-center">Lista de Automóviles</h2>
+
+    <div class="automovil-cards-container">
+        <div class="automovil-card" *ngFor="let auto of autos">
+            <div class="card-header">
+                <h3>Automóvil ID: {{ auto.id_automovil }}</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Marca:</strong> {{ auto.id_marca }}</p>
+                <p><strong>Modelo:</strong> {{ auto.id_modelo }}</p>
+                <p><strong>Año (Procedencia):</strong> {{ auto.id_procedencia }}</p>
+                <p><strong>Precio:</strong> ${{ auto.id_equipamiento | number:'1.2-2' }}</p>
+                <p><strong>Kilometraje (Extra):</strong> {{ auto.id_extra }} km</p>
+                <p><strong>Color (Número Bastidor):</strong> {{ auto.numero_bastidor }}</p>
+                <p><strong>Cilindrada (Precio):</strong> {{ auto.precio }} cc</p>
+                <p><strong>Potencia (Descuento):</strong> {{ auto.descuento }} HP</p>
+                <p><strong>Combustible (Potencia Física):</strong> {{ auto.potencia_fisica }}</p>
+                <p><strong>Tipo Cilindrada:</strong> {{ auto.cilindrada }}</p>
+                <p><strong>Número de Plazas:</strong> {{ auto.numero_plazas }}</p>
+                <p><strong>Stock:</strong> {{ auto.stock }} unidades</p>
+            </div>
+        </div>
+
+        <div *ngIf="autos && autos.length === 0" class="no-automoviles-message text-center">
+            <p>No hay automóviles registrados en la base de datos.</p>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-secondary" (click)="goTo('/automovil-menu')">Volver al Menú de Automóviles</button>
+    </div>
+</div>

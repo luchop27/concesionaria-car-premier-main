@@ -1,0 +1,35 @@
+<div style="height: 35px;"></div>
+<div class="container mt-5">
+  <div class="card shadow-lg border-0 rounded-4">
+    <div class="card-header bg-primary text-white rounded-top-4">
+      <h3 class="mb-0"><i class="bi bi-person-circle me-2"></i>Mi Perfil</h3>
+    </div>
+    <div class="card-body" *ngIf="userData">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <p><strong>ID:</strong> {{ userData.id_persona }}</p>
+          <p><strong>Tipo de Documento:</strong> Cédula</p>
+          <p><strong>Documento:</strong> {{ userData.documento }}</p>
+          <p><strong>Correo:</strong> {{ userData.correo }}</p>
+        </div>
+        <div class="col-md-6">
+          <p><strong>Nombres:</strong> {{ userData.nombres }}</p>
+          <p><strong>Apellidos:</strong> {{ userData.apellidos }}</p>
+          <p><strong>Dirección:</strong> {{ userData.direccion }}</p>
+          <p><strong>Teléfono:</strong> {{ userData.telefono }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-body text-center text-danger" *ngIf="!userData">
+      <p><i class="bi bi-exclamation-circle-fill me-2"></i>No se pudo cargar la información del usuario.</p>
+    </div>
+  </div>
+
+  <a *ngIf="userData?.id_persona" [routerLink]="['/historial-compras', userData.id_persona]"
+    class="btn btn-primary mt-3">
+    Historial de Compras
+  </a>
+  <div *ngIf="!userData?.id_persona" class="alert alert-warning mt-3">
+    No se pudo obtener el ID del usuario para mostrar el historial de compras.
+  </div>
+</div>

@@ -1,0 +1,132 @@
+<div style="height: 35px;"></div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form container p-4 rounded shadow animate__fadeIn"
+    novalidate>
+    <div class="text-center mb-4">
+        <h2 class="text-gradient fw-bold">Crea tu cuenta</h2>
+        <p class="text-muted">Rellena el formulario para comenzar tu experiencia</p>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">Nombres</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input formControlName="nombres" type="text" class="form-control" placeholder="Tus nombres"
+                    [ngClass]="{'is-invalid': form.get('nombres')?.invalid && form.get('nombres')?.touched}" />
+                <div class="invalid-feedback">Nombre requerido</div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Apellidos</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input formControlName="apellidos" type="text" class="form-control" placeholder="Tus apellidos"
+                    [ngClass]="{'is-invalid': form.get('apellidos')?.invalid && form.get('apellidos')?.touched}" />
+                <div class="invalid-feedback">Apellido requerido</div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Tipo de documento</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-card-list"></i></span>
+                <select formControlName="tipo_documento" class="form-select"
+                    [ngClass]="{'is-invalid': form.get('tipo_documento')?.invalid && form.get('tipo_documento')?.touched}">
+                    <option value="" disabled selected>Seleccione</option>
+                    <option value="DNI">DNI</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="Cédula">Cédula</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <div class="invalid-feedback">Seleccione un tipo</div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Documento</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-hash"></i></span>
+                <input formControlName="documento" type="text" class="form-control" placeholder="Número"
+                    [ngClass]="{'is-invalid': form.get('documento')?.invalid && form.get('documento')?.touched}" />
+                <div class="invalid-feedback">Documento requerido</div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Correo electrónico</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                <input formControlName="correo" type="email" class="form-control" placeholder="ejemplo@correo.com"
+                    [ngClass]="{'is-invalid': form.get('correo')?.invalid && form.get('correo')?.touched}" />
+                <div class="invalid-feedback">Correo válido requerido</div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Teléfono</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                <input formControlName="telefono" type="tel" class="form-control" placeholder="Número de contacto"
+                    [ngClass]="{'is-invalid': form.get('telefono')?.invalid && form.get('telefono')?.touched}" />
+                <div class="invalid-feedback">Teléfono requerido</div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Dirección</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                <input formControlName="direccion" type="text" class="form-control" placeholder="Dirección actual"
+                    [ngClass]="{'is-invalid': form.get('direccion')?.invalid && form.get('direccion')?.touched}" />
+                <div class="invalid-feedback">Dirección requerida</div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Contraseña</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                <input formControlName="password" type="password" class="form-control" placeholder="********"
+                    [ngClass]="{'is-invalid': form.get('password')?.invalid && form.get('password')?.touched}" />
+                <div class="invalid-feedback">Contraseña requerida</div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Confirmar contraseña</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                <input formControlName="confirmPassword" type="password" class="form-control"
+                    placeholder="Repetir contraseña"
+                    [ngClass]="{'is-invalid': form.get('confirmPassword')?.invalid && form.get('confirmPassword')?.touched}" />
+                <div class="invalid-feedback">Confirme la contraseña</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKBOX DE TÉRMINOS -->
+    <div class="form-check mt-4">
+        <input class="form-check-input" type="checkbox" id="termsCheck" formControlName="aceptaTerminos"
+            [ngClass]="{'is-invalid': form.get('aceptaTerminos')?.invalid && form.get('aceptaTerminos')?.touched}" />
+        <label class="form-check-label" for="termsCheck">
+            Acepto los <a [routerLink]="['/terminos-condiciones']" target="_blank">términos y condiciones</a> de la
+            empresa.
+        </label>
+        <div class="invalid-feedback">Debes aceptar los términos para continuar</div>
+    </div>
+
+
+    <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary btn-lg">Registrarse</button>
+    </div>
+
+    <div class="text-center mt-3">
+        <span class="text-muted">¿Ya tienes una cuenta?</span>
+        <button (click)="goTo('/login')" class="btn btn-link fw-bold text-primary p-0 m-0">
+            Inicia sesión aquí
+        </button>
+    </div>
+
+    <p class="text-danger mt-3 text-center">{{ mensaje }}</p>
+</form>

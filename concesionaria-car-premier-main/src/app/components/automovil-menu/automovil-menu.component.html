@@ -1,0 +1,23 @@
+<div style="height: 35px;"></div>
+<div class="automovil-menu-wrapper">
+  <h2 class="titulo text-center">Menú de Automóviles</h2>
+
+  <div class="menu-acciones">
+    <button class="btn btn-outline-primary" (click)="goTo('/listar-automovil')">
+      <i class="fas fa-list"></i> Listar Automóviles
+    </button>
+    <button class="btn btn-outline-success" (click)="goTo('/insertar-automovil')">
+      <i class="fas fa-plus-circle"></i> Insertar Automóvil
+    </button>
+    <button class="btn btn-outline-warning" (click)="goTo('/modificar-automovil')">
+      <i class="fas fa-edit"></i> Modificar Automóvil
+    </button>
+    <button class="btn btn-outline-danger" (click)="goTo('/eliminar-automovil')">
+      <i class="fas fa-trash-alt"></i> Eliminar Automóvil
+    </button>
+  </div>
+
+  <div class="text-center mt-4">
+    <button class="btn btn-secondary" (click)="goTo('/administrador')">Volver al Panel de Administración</button>
+  </div>
+</div>

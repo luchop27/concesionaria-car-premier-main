@@ -1,0 +1,48 @@
+<div style="height: 35px;"></div>
+<div class="container mt-4">
+    <h3 class="text-primary mb-4">🧾 Historial de Compras</h3>
+
+    <!-- Si no hay ventas -->
+    <div *ngIf="historial.length === 0" class="alert alert-info text-center">
+        <p>No has realizado ninguna compra aún.</p>
+        <a routerLink="/vehiculo" class="btn btn-success mt-3">🚘 Explora Vehículos</a>
+    </div>
+
+    <!-- Si hay ventas -->
+    <div *ngIf="historial.length > 0">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID Venta</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Bastidor</th>
+                        <th>Total</th>
+                        <th>Forma de Pago</th>
+                        <th>Fecha de Entrega</th>
+                        <th>Factura</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let venta of historial">
+                        <td>{{ venta.id_venta }}</td>
+                        <td>{{ venta.marca }}</td>
+                        <td>{{ venta.modelo }}</td>
+                        <td>{{ venta.numero_bastidor }}</td>
+                        <td>${{ venta.total }}</td>
+                        <td>{{ venta.forma_pago || 'Contado' }}</td>
+                        <td>{{ venta.fecha_entrega | date:'shortDate' }}</td>
+                        <td>
+                            <a *ngIf="venta.archivo_url" [href]="'http://localhost:3000' + venta.archivo_url"
+                                target="_blank" class="btn btn-sm btn-outline-primary">
+                                📄 Ver PDF
+                            </a>
+                            <span *ngIf="!venta.archivo_url" class="text-muted">Sin factura</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

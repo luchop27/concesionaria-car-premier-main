@@ -1,0 +1,97 @@
+<div style="height: 35px;"></div>
+<div class="container my-5">
+    <!-- Cargando -->
+    <div *ngIf="cargando" class="text-center">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+        <p class="mt-2">Cargando datos del vehículo...</p>
+    </div>
+
+    <!-- Error -->
+    <div *ngIf="error" class="alert alert-danger text-center">
+        {{ error }}
+    </div>
+
+    <!-- Detalles del vehículo -->
+    <div *ngIf="autoSeleccionado" class="card shadow-lg border-0 rounded-4 overflow-hidden">
+        <!-- Cabecera -->
+        <div class="bg-dark text-white p-4">
+            <h2 class="mb-1">{{ autoSeleccionado.marca }} {{ autoSeleccionado.modelo }}</h2>
+            <p class="mb-0 small">{{ autoSeleccionado.marca_descripcion }}</p>
+        </div>
+
+        <!-- Imagen principal -->
+        <div class="text-center bg-light py-4">
+            <img [src]="autoSeleccionado.imagen || 'https://via.placeholder.com/800x400?text=Sin+Imagen'"
+                class="img-fluid rounded" style="max-height: 400px; object-fit: cover;">
+        </div>
+
+        <div class="px-4 py-3">
+            <!-- Video -->
+            <div *ngIf="autoSeleccionado.video_youtube" class="mb-4">
+                <h5 class="text-primary mb-2">Video del Vehículo</h5>
+                <div class="ratio ratio-16x9 rounded shadow-sm border">
+                    <iframe
+                        [src]="'https://www.youtube.com/embed/' + extractYouTubeId('https://www.youtube.com/watch?v=15iEJ0qY_70')"
+                        title="Video del vehículo" allowfullscreen frameborder="0"></iframe>
+                </div>
+            </div>
+            <!-- Características -->
+            <h5 class="text-primary mb-2">Características Generales</h5>
+            <div class="row row-cols-1 row-cols-md-2 g-2 mb-4">
+                <div class="col" *ngFor="let item of [
+          { label: 'Precio', value: '$' + autoSeleccionado.precio },
+          { label: 'Descuento', value: autoSeleccionado.descuento + '%' },
+          { label: 'Potencia física', value: autoSeleccionado.potencia_fisica + ' CV' },
+          { label: 'Cilindrada', value: autoSeleccionado.cilindrada },
+          { label: 'Plazas', value: autoSeleccionado.numero_plazas },
+          { label: 'Stock disponible', value: autoSeleccionado.stock }
+        ]">
+                    <div class="border p-2 rounded bg-light">
+                        <strong>{{ item.label }}:</strong> {{ item.value }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Procedencia -->
+            <h5 class="text-primary mb-2">Procedencia</h5>
+            <p>
+                <strong>País:</strong> {{ autoSeleccionado.procedencia }}<br>
+                <strong>Descripción:</strong> {{ autoSeleccionado.procedencia_descripcion }}
+            </p>
+
+            <!-- Equipamiento -->
+            <h5 class="text-primary mb-2">Equipamiento</h5>
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item">
+                    <strong>Airbag conductor:</strong> {{ autoSeleccionado.airbag_conductor ? 'Sí' : 'No' }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Cierre centralizado:</strong> {{ autoSeleccionado.cierre_centralizado ? 'Sí' : 'No' }}
+                </li>
+            </ul>
+
+            <!-- Extras -->
+            <h5 class="text-primary mb-2">Extras</h5>
+            <ul class="list-group list-group-flush mb-4">
+                <li class="list-group-item">
+                    <strong>Aire acondicionado:</strong> {{ autoSeleccionado.aire_acondicionado ? 'Sí' : 'No' }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Airbag acompañante:</strong> {{ autoSeleccionado.airbag_acompanante ? 'Sí' : 'No' }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Pintura metalizada:</strong> {{ autoSeleccionado.pintura_metalizada ? 'Sí' : 'No' }}
+                </li>
+            </ul>
+
+            <!-- Botón Comprar -->
+            <div class="text-center">
+                <button class="btn btn-success btn-lg px-5 rounded-pill shadow-sm" (click)="comprar()">
+                    <i class="bi bi-cart-fill me-2"></i> Comprar Vehículo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

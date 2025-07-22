@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+#heroCarousel {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+nav.navbar {
+    margin-bottom: 0 !important;
+}
+
+.carousel-inner,
+.carousel-item,
+.hero {
+    height: 100vh !important;
+}
+
+.hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero::before {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+}
+
+.hero::after {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,140 @@
+<style>
+    form {
+        max-width: 700px;
+        margin: 0 auto;
+        background: #f8fafc;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #1e3a8a;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-weight: bold;
+        color: #374151;
+    }
+
+    input[type="number"],
+    input[type="text"] {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border 0.3s;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 0.7rem;
+        background-color: #1e3a8a;
+        color: white;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+        margin-top: 1rem;
+    }
+
+    button:hover {
+        background-color: #374fc5;
+    }
+
+    .mensaje {
+        text-align: center;
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+</style>
+
+<div style="height: 35px;"></div>
+
+<h2>Registrar Automóvil</h2>
+
+<form (ngSubmit)="guardar()" #formAuto="ngForm">
+    <div class="form-group">
+        <label>ID Marca:</label>
+        <input type="number" name="id_marca" [(ngModel)]="auto.id_marca" required />
+    </div>
+
+    <div class="form-group">
+        <label>ID Modelo:</label>
+        <input type="number" name="id_modelo" [(ngModel)]="auto.id_modelo" required />
+    </div>
+
+    <div class="form-group">
+        <label>ID Procedencia:</label>
+        <input type="number" name="id_procedencia" [(ngModel)]="auto.id_procedencia" required />
+    </div>
+
+    <div class="form-group">
+        <label>ID Equipamiento:</label>
+        <input type="number" name="id_equipamiento" [(ngModel)]="auto.id_equipamiento" required />
+    </div>
+
+    <div class="form-group">
+        <label>ID Extra:</label>
+        <input type="number" name="id_extra" [(ngModel)]="auto.id_extra" required />
+    </div>
+
+    <div class="form-group">
+        <label>Número de Bastidor:</label>
+        <input type="text" name="numero_bastidor" [(ngModel)]="auto.numero_bastidor" required />
+    </div>
+
+    <div class="form-group">
+        <label>Precio:</label>
+        <input type="number" name="precio" [(ngModel)]="auto.precio" required />
+    </div>
+
+    <div class="form-group">
+        <label>Descuento:</label>
+        <input type="number" name="descuento" [(ngModel)]="auto.descuento" />
+    </div>
+
+    <div class="form-group">
+        <label>Potencia Física:</label>
+        <input type="number" name="potencia_fisica" [(ngModel)]="auto.potencia_fisica" />
+    </div>
+
+    <div class="form-group">
+        <label>Cilindrada:</label>
+        <input type="number" name="cilindrada" [(ngModel)]="auto.cilindrada" />
+    </div>
+
+    <div class="form-group">
+        <label>Número de Plazas:</label>
+        <input type="number" name="numero_plazas" [(ngModel)]="auto.numero_plazas" />
+    </div>
+
+    <div class="form-group">
+        <label>Stock:</label>
+        <input type="number" name="stock" [(ngModel)]="auto.stock" />
+    </div>
+
+    <button type="submit">Guardar</button>
+</form>
+
+<div *ngIf="mensaje" class="mensaje">
+    <p [style.color]="exito ? 'green' : 'red'">{{ mensaje }}</p>
+</div>

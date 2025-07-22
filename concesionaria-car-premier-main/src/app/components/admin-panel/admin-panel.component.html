@@ -1,0 +1,30 @@
+<div style="height: 35px;"></div>
+<div class="admin-panel-wrapper">
+    <h2 class="titulo text-center">Panel de Administración</h2>
+
+    <div class="welcome-section text-center">
+        <h3>¡Bienvenido, Administrador Davis Córdova!</h3>
+        <p>Desde aquí puedes gestionar los diferentes módulos de tu sistema.</p>
+    </div>
+
+    <div class="admin-container">
+        <div class="admin-card" (click)="goTo('/automovil-menu')">
+            <h3>Automóvil</h3>
+            <p>Accede al menú de acciones de automóviles.</p>
+            <button class="btn btn-primary">Administrar</button>
+        </div>
+
+        <div class="admin-card" (click)="goTo('/marca')">
+            <h3>Persona</h3>
+            <p>Gestiona las marcas de vehículos.</p>
+            <button class="btn btn-primary">Administrar</button>
+        </div>
+
+        <div class="admin-card" (click)="goTo('/modelo')">
+            <h3>Usuario</h3>
+            <p>Gestiona los modelos de vehículos.</p>
+            <button class="btn btn-primary">Administrar</button>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.promo-ribbon {
+    width: 230px;
+    background: #dc2626;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem 0;
+    position: absolute;
+    top: 20px;
+    left: -60px;
+    transform: rotate(-45deg);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    font-size: 0.75rem;
+    z-index: 10;
+    text-transform: uppercase;
+}
+
+.card-auto {
+    position: relative;
+    overflow: hidden;
+}

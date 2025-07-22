@@ -1,0 +1,157 @@
+<nav class="navbar navbar-dark bg-dark px-3">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+
+    <!-- Marca + Pestañas -->
+    <div class="d-flex align-items-center" *ngIf="!esAdmin()">
+      <a class="navbar-brand mb-0" (click)="goTo('/home')" style="cursor: pointer;">CAR/PREMIER</a>
+
+      <button class="btn btn-link text-white ms-2" (click)="goTo('/home')" style="text-decoration: none;">
+        <i class="bi bi-house-door-fill me-1"></i> Home
+      </button>
+
+      <button class="btn btn-link text-white ms-2" (click)="goTo('/vehiculo')" style="text-decoration: none;">
+        <i class="bi bi-car-front-fill me-1"></i> Vehículos
+      </button>
+
+
+      <button class="btn btn-link text-white ms-2" (click)="goTo('/ofertas')" style="text-decoration: none;">
+        <i class="bi bi-tags-fill me-1"></i> Ofertas
+      </button>
+
+      <button class="btn btn-link text-white ms-2" (click)="goTo('/personalizacion')" style="text-decoration: none;">
+        <i class="bi bi-brush-fill me-1"></i> Personalización
+      </button>
+    </div>
+
+    <div class="text-white me-3 fs-4 fw-bold d-flex align-items-center">
+      <i class="bi bi-clock me-2 fs-3"></i> {{ horaActual }}
+    </div>
+
+
+    <!-- Botones dinámicos -->
+    <div class="d-flex align-items-center">
+      <ng-container *ngIf="!isLoggedIn; else logged">
+        <button class="btn btn-primary me-2" (click)="goTo('/login')">
+          <i class="bi bi-box-arrow-in-right me-1"></i> Iniciar sesión
+        </button>
+        <button class="btn btn-success" (click)="goTo('/register')">
+          <i class="bi bi-person-plus-fill me-1"></i> Registrarse
+        </button>
+      </ng-container>
+
+      <ng-template #logged>
+        <ng-container *ngIf="isLoggedIn && esAdmin()">
+          <button class="btn btn-warning me-2" (click)="goTo('/administrador')">
+            <i class="bi bi-shield-lock-fill me-1"></i> Admin Panel
+          </button>
+        </ng-container>
+        <button class="btn btn-info me-2" (click)="goTo('/perfil')">
+          <i class="bi bi-person-circle me-1"></i> Mi Perfil
+        </button>
+        <button class="btn btn-danger" (click)="logout()">
+          <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</nav>
+
+<div class="mt-4"></div>
+
+<router-outlet></router-outlet>
+<div *ngIf="!esAdmin()">
+  <footer class="bg-dark text-light pt-5 pb-4 mt-5">
+    <div class="container">
+      <div class="row gy-4">
+
+        <!-- Descripción y redes sociales -->
+        <div class="col-lg-4 col-md-6">
+          <h5 class="text-warning fw-bold mb-3">CAR/PREMIER</h5>
+          <p class="small mb-4">
+            Concesionaria líder en autos nuevos y usados. Atención personalizada, financiamiento flexible y opciones de
+            personalización. Encuentra tu auto ideal con nosotros.
+          </p>
+          <h6 class="text-light mb-2">Síguenos</h6>
+          <div class="d-flex gap-3 flex-wrap fs-5">
+            <a href="#" class="text-light hover-opacity"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-light hover-opacity"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-light hover-opacity"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="text-light hover-opacity"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-light hover-opacity"><i class="bi bi-tiktok"></i></a>
+            <a href="#" class="text-light hover-opacity"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" class="text-light hover-opacity"><i class="bi bi-telegram"></i></a>
+            <a href="#" class="text-light hover-opacity"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- Navegación -->
+        <div class="col-lg-2 col-md-6">
+          <h6 class="text-warning fw-semibold mb-3">Secciones</h6>
+          <ul class="list-unstyled small">
+            <li><a href="/" class="text-light text-decoration-none hover-opacity"><i
+                  class="bi bi-house me-1"></i>Inicio</a></li>
+            <li><a href="/vehiculos" class="text-light text-decoration-none hover-opacity"><i
+                  class="bi bi-car-front me-1"></i>Vehículos</a></li>
+            <li><a href="/ofertas" class="text-light text-decoration-none hover-opacity"><i
+                  class="bi bi-tag me-1"></i>Ofertas</a></li>
+            <li><a href="/personalizacion" class="text-light text-decoration-none hover-opacity"><i
+                  class="bi bi-palette me-1"></i>Personaliza</a></li>
+          </ul>
+        </div>
+
+        <!-- Accesos rápidos -->
+        <div class="col-lg-2 col-md-6">
+          <h6 class="text-warning fw-semibold mb-3">Accesos rápidos</h6>
+          <ul class="list-unstyled small">
+            <li><a href="/login" class="text-light text-decoration-none hover-opacity">Iniciar sesión</a></li>
+            <li><a href="/register" class="text-light text-decoration-none hover-opacity">Registrarse</a></li>
+            <li><a href="/faq" class="text-light text-decoration-none hover-opacity">Preguntas frecuentes</a></li>
+            <li><a href="/soporte" class="text-light text-decoration-none hover-opacity">Soporte técnico</a></li>
+          </ul>
+        </div>
+
+        <!-- Marcas populares -->
+        <div class="col-lg-2 col-md-6">
+          <h6 class="text-warning fw-semibold mb-3">Marcas populares</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#" class="text-light text-decoration-none hover-opacity">Toyota</a></li>
+            <li><a href="#" class="text-light text-decoration-none hover-opacity">Ford</a></li>
+            <li><a href="#" class="text-light text-decoration-none hover-opacity">Chevrolet</a></li>
+            <li><a href="#" class="text-light text-decoration-none hover-opacity">Hyundai</a></li>
+            <li><a href="#" class="text-light text-decoration-none hover-opacity">BMW</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div class="col-lg-2 col-md-6">
+          <h6 class="text-warning fw-semibold mb-3">Contacto</h6>
+          <ul class="list-unstyled small">
+            <li><i class="bi bi-geo-alt-fill me-1"></i> Av. Principal #123</li>
+            <li><i class="bi bi-telephone-fill me-1"></i> +58 412-1234567</li>
+            <li><i class="bi bi-envelope-fill me-1"></i> contacto.com</li>
+          </ul>
+          <p class="small mt-3">¿Nuevo aquí? <a href="/register"
+              class="text-warning text-decoration-none hover-opacity">Regístrate</a></p>
+        </div>
+
+      </div>
+
+      <hr class="border-secondary mt-4">
+
+      <!-- Footer inferior -->
+      <div class="text-center small text-secondary">
+        <p class="mb-1">&copy; 2025 <span class="text-light fw-semibold">CAR/PREMIER</span>. Todos los derechos
+          reservados.</p>
+        <a href="#" class="text-secondary text-decoration-none me-2 hover-opacity">Política de privacidad</a> |
+        <a href="#" class="text-secondary text-decoration-none ms-2 hover-opacity">Términos y condiciones</a>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .hover-opacity:hover {
+      opacity: 0.75;
+      transition: opacity 0.3s ease;
+    }
+  </style>
+</div>

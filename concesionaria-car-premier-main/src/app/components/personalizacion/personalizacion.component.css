@@ -1,0 +1,62 @@
+.fondo-carro-3d {
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    padding: 60px 20px;
+}
+
+.carro-interactivo {
+    position: relative;
+}
+
+.hotspot {
+    position: absolute;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    padding: 12px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.hotspot:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.hotspot i {
+    font-size: 20px;
+    color: #fff;
+}
+
+.upgrade-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    padding: 20px 25px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.upgrade-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.precio {
+    font-weight: bold;
+    color: #ffd700;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.precio:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffd700;
+}
+
+/* Footer al final */
+footer {
+    background-color: #111;
+    color: white;
+    padding: 40px 20px;
+}

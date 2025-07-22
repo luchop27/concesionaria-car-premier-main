@@ -1,0 +1,112 @@
+<div style="height: 35px;"></div>
+<!-- Usamos [formGroup] para vincular el contenedor del formulario con nuestro FormGroup -->
+<div class="container my-4" *ngIf="auto && persona" [formGroup]="formulario">
+    <h2 class="text-center mb-4">Resumen de la Compra</h2>
+
+    <div class="row">
+        <!-- Datos del vehículo (sin cambios) -->
+        <section class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Vehículo</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Marca:</strong> {{ auto.marca }}</p>
+                    <p><strong>Modelo:</strong> {{ auto.modelo }}</p>
+                    <p><strong>Precio:</strong> ${{ auto.precio | number }}</p>
+                    <!-- ... resto de los datos del vehículo ... -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Datos del comprador (sin cambios) -->
+        <section class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Datos del Comprador</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Nombre:</strong> {{ persona.nombres }} {{ persona.apellidos }}</p>
+                    <p><strong>Cédula:</strong> {{ persona.documento }}</p>
+                    <p><strong>Correo:</strong> {{ persona.correo }}</p>
+                    <!-- ... resto de los datos de la persona ... -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sección de Pago -->
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h5 class="mb-0">Información de Pago</h5>
+        </div>
+        <div class="card-body">
+            <!-- Selección de banco con formControlName -->
+            <div class="mb-3">
+                <label for="banco" class="form-label">Seleccione un banco:</label>
+                <select id="banco" class="form-select" formControlName="idBanco">
+                    <option [ngValue]="null" disabled>-- Seleccione un banco --</option>
+                    <option *ngFor="let banco of bancos" [ngValue]="banco.id">
+                        {{ banco.nombre }}
+                    </option>
+                </select>
+                <!-- Mensaje de error para el select -->
+                <div *ngIf="formulario.get('idBanco')?.invalid && formulario.get('idBanco')?.touched"
+                    class="text-danger mt-1 small">
+                    Debe seleccionar un banco.
+                </div>
+            </div>
+
+            <!-- Número de cuenta con formControlName -->
+            <div class="mb-3">
+                <label for="numeroCuenta" class="form-label">Número de Cuenta</label>
+                <input type="text" id="numeroCuenta" class="form-control" formControlName="numeroCuenta" maxlength="20"
+                    placeholder="Ej: 012345678900" />
+                <!-- Mensaje de error para el input -->
+                <div *ngIf="formulario.get('numeroCuenta')?.invalid && formulario.get('numeroCuenta')?.touched"
+                    class="text-danger mt-1 small">
+                    Debe ingresar un número de cuenta.
+                </div>
+            </div>
+
+            <!-- Botón para validar cuenta -->
+            <div class="mb-3 text-center">
+                <!-- El botón se deshabilita si el formulario para estos campos es inválido -->
+                <button type="button" class="btn btn-outline-secondary" (click)="validarCuenta()"
+                    [disabled]="formulario.invalid">
+                    Validar Cuenta
+                </button>
+            </div>
+
+            <!-- Mostrar datos de la cuenta si se validó -->
+            <div *ngIf="datosCuenta" class="formulario-container mt-3">
+                <div class="alert alert-info">
+                    <p><strong>Banco:</strong> {{ datosCuenta.banco }}</p>
+                    <p><strong>Saldo disponible:</strong> ${{ datosCuenta.saldo | number }}</p>
+                    <p><strong>Monto a pagar:</strong> ${{ auto?.precio | number }}</p>
+                </div>
+            </div>
+
+            <!-- Botón para confirmar compra -->
+            <div class="text-center mt-4">
+                <!-- El botón se deshabilita si no hay datos de cuenta o si el saldo es insuficiente -->
+                <button type="button" class="btn btn-primary btn-lg"
+                    [disabled]="!datosCuenta || datosCuenta.saldo < auto?.precio" (click)="confirmarCompra()">
+                    Confirmar Compra
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje de compra -->
+    <div *ngIf="mensajeCompra"
+        [ngClass]="{ 'alert alert-success': compraExitosa, 'alert alert-danger': !compraExitosa }"
+        class="mt-3 text-center" role="alert">
+        {{ mensajeCompra }}
+    </div>
+
+    <!-- Enlace a la factura generada -->
+    <div *ngIf="facturaGenerada && urlFactura" class="text-center mt-3">
+        <a [href]="urlFactura" target="_blank" class="btn btn-info">Ver Factura</a>
+    </div>
+</div>

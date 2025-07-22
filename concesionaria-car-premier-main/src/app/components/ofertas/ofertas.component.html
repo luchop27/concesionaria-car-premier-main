@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Rubik', sans-serif;
+            background: linear-gradient(to bottom, #f1f5f9, #e2e8f0);
+            color: #1e293b;
+        }
+
+        header {
+            background: #0f172a;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.4rem;
+        }
+
+        .catalogo-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .catalogo-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 2rem;
+        }
+
+        .grid-autos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card-auto {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .card-auto:hover {
+            transform: translateY(-6px);
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-body h3 {
+            font-size: 1.3rem;
+            color: #1d4ed8;
+            margin: 0 0 0.5rem;
+        }
+
+        .card-body p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #475569;
+            margin-bottom: 1rem;
+        }
+
+        .info-line {
+            font-weight: 500;
+            color: #0f172a;
+        }
+
+        .card-footer {
+            margin-top: auto;
+        }
+
+        .btn-detalle {
+            background-color: transparent;
+            border: 2px solid #1d4ed8;
+            color: #1d4ed8;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn-detalle:hover {
+            background-color: #1d4ed8;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="height: 35px;"></div>
+    <section class="catalogo-container">
+        <div class="grid-autos">
+            <!-- Vehículo 1 -->
+            <div class="card-auto">
+                <div class="promo-ribbon">¡Próximamente en nuestras sucursales!</div>
+                <img src="./suvkia.jpg" alt="Kia Sportage" class="card-img-top">
+                <div class="card-body">
+                    <h3>Kia Sportage 2024</h3>
+                    <p><span class="info-line">Precio:</span> $21,990<br>
+                        <span class="info-line">Stock:</span> 12 unidades<br>
+                        <span class="info-line">Procedencia:</span> Corea<br>
+                        <span class="info-line">Potencia:</span> 177 CV
+                    </p>
+                    <div class="card-footer">
+                        <button class="btn-detalle">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehículo 2 -->
+            <div class="card-auto">
+                <div class="promo-ribbon">¡Próximamente en nuestras sucursales!</div>
+                <img src="./mazda323.jpg" alt="Toyota Corolla" class="card-img-top">
+                <div class="card-body">
+                    <h3>Toyota Corolla Híbrido</h3>
+                    <p><span class="info-line">Precio:</span> $23,500<br>
+                        <span class="info-line">Stock:</span> 8 unidades<br>
+                        <span class="info-line">Procedencia:</span> Japón<br>
+                        <span class="info-line">Potencia:</span> 122 CV
+                    </p>
+                    <div class="card-footer">
+                        <button class="btn-detalle">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehículo 3 -->
+            <div class="card-auto">
+                <div class="promo-ribbon">¡Próximamente en nuestras sucursales!</div>
+                <img src="./chevroletdmax.avif" alt="Chevrolet D-Max" class="card-img-top">
+                <div class="card-body">
+                    <h3>Chevrolet D-Max 4x4</h3>
+                    <p><span class="info-line">Precio:</span> $28,300<br>
+                        <span class="info-line">Stock:</span> 5 unidades<br>
+                        <span class="info-line">Procedencia:</span> Ecuador<br>
+                        <span class="info-line">Potencia:</span> 150 CV
+                    </p>
+                    <div class="card-footer">
+                        <button class="btn-detalle">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehículo 4 -->
+            <div class="card-auto">
+                <div class="promo-ribbon">¡Próximamente en nuestras sucursales!</div>
+                <img src="./teslamodel3.webp" alt="Tesla Model 3" class="card-img-top">
+                <div class="card-body">
+                    <h3>Tesla Model 3</h3>
+                    <p><span class="info-line">Precio:</span> $38,900<br>
+                        <span class="info-line">Stock:</span> 3 unidades<br>
+                        <span class="info-line">Procedencia:</span> EE.UU.<br>
+                        <span class="info-line">Potencia:</span> 283 CV
+                    </p>
+                    <div class="card-footer">
+                        <button class="btn-detalle">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehículo 5 -->
+            <div class="card-auto">
+                <div class="promo-ribbon">¡Próximamente en nuestras sucursales!</div>
+                <img src="./jeepcompass.jpg" alt="Jeep Compass" class="card-img-top">
+                <div class="card-body">
+                    <h3>Jeep Compass</h3>
+                    <p><span class="info-line">Precio:</span> $31,800<br>
+                        <span class="info-line">Stock:</span> 6 unidades<br>
+                        <span class="info-line">Procedencia:</span> Brasil<br>
+                        <span class="info-line">Potencia:</span> 180 CV
+                    </p>
+                    <div class="card-footer">
+                        <button class="btn-detalle">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehículo 6 -->
+            <div class="card-auto">
+                <div class="promo-ribbon">¡Próximamente en nuestras sucursales!</div>
+                <img src="./ionic6.webp" alt="Hyundai Ioniq 6" class="card-img-top">
+                <div class="card-body">
+                    <h3>Hyundai Ioniq 6</h3>
+                    <p><span class="info-line">Precio:</span> $35,400<br>
+                        <span class="info-line">Stock:</span> 4 unidades<br>
+                        <span class="info-line">Procedencia:</span> Corea<br>
+                        <span class="info-line">Potencia:</span> 225 CV
+                    </p>
+                    <div class="card-footer">
+                        <button class="btn-detalle">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
