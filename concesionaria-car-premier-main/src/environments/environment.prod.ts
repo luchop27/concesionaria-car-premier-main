@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://api-car-premier.onrender.com/api'
+    apiUrl: 'https://concesionaria-car-premier-backend-production.up.railway.app/api'
 };
